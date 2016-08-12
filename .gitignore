@@ -1,0 +1,8 @@
+.git
+nbproject
+.kdev4
+.idea
+.kate-swp
+~
+vendor/
+composer.lock

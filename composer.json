@@ -1,0 +1,27 @@
+{
+    "name": "drteam/pcrecruiter",
+    "type": "project",
+    "description": "PHP library for work with PCRecruiter Rest API",
+    "keywords": ["pcrecruiter", "pcr", "api"],
+    "homepage": "https://github.com/DrTeamRocks/pcrecruiter",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pavel Rykov",
+            "email": "p.rikov@drteam.rocks",
+            "homepage": "http://drteam.rocks/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "ext-curl": "*",
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "DrTeam\\PCRecruiter": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}

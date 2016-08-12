@@ -1,2 +1,3 @@
-# pcrecruiter
-PHP library for work with PCR Rest API
+# PCRecruiter
+
+PHP library for work with PCRecruiter Rest API
