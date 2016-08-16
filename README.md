@@ -6,6 +6,26 @@
 
 PHP library for work with PCRecruiter Rest API
 
+```php
+// Enable the class
+$pcr = new PCRecruiter();
+
+// Parameters for PCR
+$pcr->user = '[USERNAME]';
+$pcr->pass = '[PASSWORD]';
+$pcr->database = '[DBNAME].[POOLNAME]';
+$pcr->app = '[APPID]';
+$pcr->key = '[APIKEY]';
+
+// Get token for current session
+$response = $pcr->getAccessToken();
+$pcr->token = $response['message']->SessionId;
+
+// Get all jobs from PCR board
+$response = $pcr->getPositions();
+$jobs = $response['message']->Results;
+```
+
 ## How to install
 
 ### Via composer
