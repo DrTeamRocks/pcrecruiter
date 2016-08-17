@@ -100,6 +100,23 @@ class PCRecruiter
 
     }
 
+    /**
+     * Generate new URL from parameters
+     *
+     * @param $parameters
+     * @return string
+     */
+    function compileURL($parameters)
+    {
+        // Init chart for endpoint
+        $endpoint = '?';
+        // Then parse the array and create the url
+        foreach ($parameters as $key => $value) {
+            $endpoint .= $key . '=' . $value;
+        }
+
+        return $endpoint;
+    }
 
 
     /**
@@ -153,15 +170,8 @@ class PCRecruiter
     {
         $endpoint = '/candidates';
 
-        // If options is not empty and is array
-        if (!empty($parameters) && is_array($parameters)) {
-            // Append chart to endpoint
-            $endpoint .= '?';
-            // Then parse the array and create the url
-            foreach ($parameters as $key => $value) {
-                $endpoint .= $key . '=' . $value;
-            }
-        }
+        if (!empty($parameters) && is_array($parameters))
+            $endpoint .= $this->compileURL($parameters);
 
         return $this->doRequest('get', $endpoint);
     }
@@ -183,22 +193,16 @@ class PCRecruiter
      * Get a Candidate by CandidateId
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
-     * @param   string $id
+     * @param   string $id CandidateId
+     * @param   array $parameters
      * @return  array|false
      */
-    public function getCandidateByID($id)
+    public function getCandidateByID($id, $parameters = array())
     {
         $endpoint = '/candidates/' . $id;
 
-        // If options is not empty and is array
-        if (!empty($parameters) && is_array($parameters)) {
-            // Append chart to endpoint
-            $endpoint .= '?';
-            // Then parse the array and create the url
-            foreach ($parameters as $key => $value) {
-                $endpoint .= $key . '=' . $value;
-            }
-        }
+        if (!empty($parameters) && is_array($parameters))
+            $endpoint .= $this->compileURL($parameters);
 
         return $this->doRequest('get', $endpoint);
     }
@@ -207,7 +211,7 @@ class PCRecruiter
      * Update a Candidate by CandidateId
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
-     * @param   string $id
+     * @param   string $id CandidateId
      * @param   array $candidate
      * @return  array|false
      */
@@ -220,25 +224,263 @@ class PCRecruiter
     /**
      * Delete Candidate by Id
      *
-     * @param   string $id
+     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
+     * @param   string $id CandidateId
      * @return  array|false
      */
     public function deleteCandidateByID($id)
     {
         $endpoint = '/candidates/' . $id;
 
-        // If options is not empty and is array
-        if (!empty($parameters) && is_array($parameters)) {
-            // Append chart to endpoint
-            $endpoint .= '?';
-            // Then parse the array and create the url
-            foreach ($parameters as $key => $value) {
-                $endpoint .= $key . '=' . $value;
-            }
-        }
+        if (!empty($parameters) && is_array($parameters))
+            $endpoint .= $this->compileURL($parameters);
 
         return $this->doRequest('get', $endpoint);
     }
+
+    /**
+     * Get Attachments by CandidateId
+     *
+     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
+     * @param   string $id CandidateId
+     * @param   array $parameters
+     * @return  array|false
+     */
+    public function getCandidateAttachmentsByID($id, $parameters = array())
+    {
+        $endpoint = '/candidates/' . $id . '/attachments';
+
+        if (!empty($parameters) && is_array($parameters))
+            $endpoint .= $this->compileURL($parameters);
+
+        return $this->doRequest('get', $endpoint);
+    }
+
+    /**
+     * Create a new Candidate Attachment
+     *
+     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
+     * @param   string $id CandidateId
+     * @param   array $attachments
+     * @return  array|false
+     */
+    public function postCandidateAttachmentsByID($id, $attachments = array())
+    {
+        $endpoint = '/candidates/' . $id . '/attachments';
+        return $this->doRequest('post', $endpoint, array('Attachments' => $attachments));
+    }
+
+    /**
+     * Get Candidate Attachment by AttachmentId
+     *
+     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
+     * @param   string $cid CandidateId
+     * @param   string $aid AttachmentId
+     * @param   array $parameters
+     * @return  array|false
+     */
+    public function getCandidateAttachmentsByAttachmentID($cid, $aid, $parameters = array())
+    {
+        $endpoint = '/candidates/' . $cid . '/attachments/' . $aid;
+
+        if (!empty($parameters) && is_array($parameters))
+            $endpoint .= $this->compileURL($parameters);
+
+        return $this->doRequest('get', $endpoint);
+    }
+
+    /**
+     * Update a Candidate Attachment
+     *
+     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
+     * @param   string $cid CandidateId
+     * @param   string $aid AttachmentId
+     * @param   array $candidate Candidate Attachments Body
+     * @return  array|false
+     */
+    public function putCandidateAttachmentsByAttachmentID($cid, $aid, $candidate = array())
+    {
+        $endpoint = '/candidates/' . $cid . '/attachments/' . $aid;
+        return $this->doRequest('put', $endpoint, array('Attachments' => $candidate));
+    }
+
+
+    /**
+     * Search Candidate Activities by CandidateId
+     *
+     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
+     * @param   string $id CandidateId
+     * @param   array $parameters
+     * @return  array|false
+     */
+    public function getCandidateActivitiesByID($id, $parameters = array())
+    {
+        $endpoint = '/candidates/' . $id . '/activities';
+
+        if (!empty($parameters) && is_array($parameters))
+            $endpoint .= $this->compileURL($parameters);
+
+        return $this->doRequest('get', $endpoint);
+    }
+
+    /**
+     * Create a new Candidate Activity
+     *
+     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
+     * @param   string $id CandidateId
+     * @param   array $activity
+     * @return  array|false
+     */
+    public function postCandidateActivitiesByID($id, $activity = array())
+    {
+        $endpoint = '/candidates/' . $id . '/activities';
+        return $this->doRequest('post', $endpoint, array('CandidateActivity' => $activity));
+    }
+
+    /**
+     * Return a Candidate's Resume
+     *
+     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
+     * @param   string $id CandidateId
+     * @param   array $parameters
+     * @return  array|false
+     */
+    public function getCandidateResumesByID($id, $parameters = array())
+    {
+        $endpoint = '/candidates/' . $id . '/resumes';
+
+        if (!empty($parameters) && is_array($parameters))
+            $endpoint .= $this->compileURL($parameters);
+
+        return $this->doRequest('get', $endpoint);
+    }
+
+    /**
+     * Create a new Candidate Resume
+     *
+     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
+     * @param   string $id CandidateId
+     * @param   array $resume
+     * @return  array|false
+     */
+    public function postCandidateResumesByID($id, $resume = array())
+    {
+        $endpoint = '/candidates/' . $id . '/resumes';
+        return $this->doRequest('post', $endpoint, array('Resume' => $resume));
+    }
+
+    /**
+     * Update Candidate Resume
+     *
+     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
+     * @param   string $id CandidateId
+     * @param   array $resume
+     * @return  array|false
+     */
+    public function putCandidateResumesByID($id, $resume = array())
+    {
+        $endpoint = '/candidates/' . $id . '/resumes';
+        return $this->doRequest('put', $endpoint, array('Resume' => $resume));
+    }
+
+    /**
+     * Return a Candidate's Blinded Resume
+     *
+     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
+     * @param   string $id CandidateId
+     * @param   array $parameters
+     * @return  array|false
+     */
+    public function getCandidateBlindedByID($id, $parameters = array())
+    {
+        $endpoint = '/candidates/' . $id . '/blindedresumes';
+
+        if (!empty($parameters) && is_array($parameters))
+            $endpoint .= $this->compileURL($parameters);
+
+        return $this->doRequest('get', $endpoint);
+    }
+
+    /**
+     * Create a new Candidate Blinded Resume
+     *
+     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
+     * @param   string $id CandidateId
+     * @param   array $resume
+     * @return  array|false
+     */
+    public function postCandidateBlindedByID($id, $resume = array())
+    {
+        $endpoint = '/candidates/' . $id . '/blindedresumes';
+        return $this->doRequest('post', $endpoint, array('Resume' => $resume));
+    }
+
+    /**
+     * Update Candidate Blinded Resume
+     *
+     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
+     * @param   string $id CandidateId
+     * @param   array $resume
+     * @return  array|false
+     */
+    public function putCandidateBlindedByID($id, $resume = array())
+    {
+        $endpoint = '/candidates/' . $id . '/blindedresumes';
+        return $this->doRequest('put', $endpoint, array('Resume' => $resume));
+    }
+
+    /**
+     * Search Candidate Activities
+     *
+     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
+     * @param   array $parameters
+     * @return  array|false
+     */
+    public function getCandidatesActivities($parameters = array())
+    {
+        $endpoint = '/candidates/activities';
+
+        if (!empty($parameters) && is_array($parameters))
+            $endpoint .= $this->compileURL($parameters);
+
+        return $this->doRequest('get', $endpoint);
+    }
+
+    /**
+     * Search Candidate Activities by ActivityId
+     *
+     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
+     * @param   string $id ActivityId
+     * @param   array $parameters
+     * @return  array|false
+     */
+    public function getCandidatesActivitiesByActivityID($id, $parameters = array())
+    {
+        $endpoint = '/candidates/activities/' . $id;
+
+        if (!empty($parameters) && is_array($parameters))
+            $endpoint .= $this->compileURL($parameters);
+
+        return $this->doRequest('get', $endpoint);
+    }
+
+    /**
+     * Get Distinct Fields
+     *
+     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
+     * @param   array $parameters
+     * @return  array|false
+     */
+    public function getCandidatesDistinctFields($parameters = array())
+    {
+        $endpoint = '/candidates/DistinctFields';
+
+        if (!empty($parameters) && is_array($parameters))
+            $endpoint .= $this->compileURL($parameters);
+
+        return $this->doRequest('get', $endpoint);
+    }
+
 
 
     /**
@@ -256,15 +498,8 @@ class PCRecruiter
     {
         $endpoint = '/companies';
 
-        // If options is not empty and is array
-        if (!empty($parameters) && is_array($parameters)) {
-            // Append chart to endpoint
-            $endpoint .= '?';
-            // Then parse the array and create the url
-            foreach ($parameters as $key => $value) {
-                $endpoint .= $key . '=' . $value;
-            }
-        }
+        if (!empty($parameters) && is_array($parameters))
+            $endpoint .= $this->compileURL($parameters);
 
         return $this->doRequest('get', $endpoint);
     }
@@ -293,15 +528,8 @@ class PCRecruiter
     {
         $endpoint = '/companies/' . $id;
 
-        // If options is not empty and is array
-        if (!empty($parameters) && is_array($parameters)) {
-            // Append chart to endpoint
-            $endpoint .= '?';
-            // Then parse the array and create the url
-            foreach ($parameters as $key => $value) {
-                $endpoint .= $key . '=' . $value;
-            }
-        }
+        if (!empty($parameters) && is_array($parameters))
+            $endpoint .= $this->compileURL($parameters);
 
         return $this->doRequest('get', $endpoint);
     }
@@ -331,15 +559,8 @@ class PCRecruiter
     {
         $endpoint = '/companies/' . $id;
 
-        // If options is not empty and is array
-        if (!empty($parameters) && is_array($parameters)) {
-            // Append chart to endpoint
-            $endpoint .= '?';
-            // Then parse the array and create the url
-            foreach ($parameters as $key => $value) {
-                $endpoint .= $key . '=' . $value;
-            }
-        }
+        if (!empty($parameters) && is_array($parameters))
+            $endpoint .= $this->compileURL($parameters);
 
         return $this->doRequest('get', $endpoint);
     }
@@ -362,15 +583,8 @@ class PCRecruiter
     {
         $endpoint = '/positions';
 
-        // If options is not empty and is array
-        if (!empty($parameters) && is_array($parameters)) {
-            // Append chart to endpoint
-            $endpoint .= '?';
-            // Then parse the array and create the url
-            foreach ($parameters as $key => $value) {
-                $endpoint .= $key . '=' . $value;
-            }
-        }
+        if (!empty($parameters) && is_array($parameters))
+            $endpoint .= $this->compileURL($parameters);
 
         return $this->doRequest('get', $endpoint);
     }
@@ -399,15 +613,8 @@ class PCRecruiter
     {
         $endpoint = '/positions/' . $id;
 
-        // If options is not empty and is array
-        if (!empty($parameters) && is_array($parameters)) {
-            // Append chart to endpoint
-            $endpoint .= '?';
-            // Then parse the array and create the url
-            foreach ($parameters as $key => $value) {
-                $endpoint .= $key . '=' . $value;
-            }
-        }
+        if (!empty($parameters) && is_array($parameters))
+            $endpoint .= $this->compileURL($parameters);
 
         return $this->doRequest('get', $endpoint);
     }
@@ -436,15 +643,8 @@ class PCRecruiter
     {
         $endpoint = '/positions/' . $id;
 
-        // If options is not empty and is array
-        if (!empty($parameters) && is_array($parameters)) {
-            // Append chart to endpoint
-            $endpoint .= '?';
-            // Then parse the array and create the url
-            foreach ($parameters as $key => $value) {
-                $endpoint .= $key . '=' . $value;
-            }
-        }
+        if (!empty($parameters) && is_array($parameters))
+            $endpoint .= $this->compileURL($parameters);
 
         return $this->doRequest('get', $endpoint);
     }
@@ -466,15 +666,8 @@ class PCRecruiter
     {
         $endpoint = '/users';
 
-        // If options is not empty and is array
-        if (!empty($parameters) && is_array($parameters)) {
-            // Append chart to endpoint
-            $endpoint .= '?';
-            // Then parse the array and create the url
-            foreach ($parameters as $key => $value) {
-                $endpoint .= $key . '=' . $value;
-            }
-        }
+        if (!empty($parameters) && is_array($parameters))
+            $endpoint .= $this->compileURL($parameters);
 
         return $this->doRequest('get', $endpoint);
     }
@@ -491,15 +684,8 @@ class PCRecruiter
     {
         $endpoint = '/users/' . $username;
 
-        // If options is not empty and is array
-        if (!empty($parameters) && is_array($parameters)) {
-            // Append chart to endpoint
-            $endpoint .= '?';
-            // Then parse the array and create the url
-            foreach ($parameters as $key => $value) {
-                $endpoint .= $key . '=' . $value;
-            }
-        }
+        if (!empty($parameters) && is_array($parameters))
+            $endpoint .= $this->compileURL($parameters);
 
         return $this->doRequest('get', $endpoint);
     }
@@ -521,15 +707,8 @@ class PCRecruiter
     {
         $endpoint = '/placement';
 
-        // If options is not empty and is array
-        if (!empty($parameters) && is_array($parameters)) {
-            // Append chart to endpoint
-            $endpoint .= '?';
-            // Then parse the array and create the url
-            foreach ($parameters as $key => $value) {
-                $endpoint .= $key . '=' . $value;
-            }
-        }
+        if (!empty($parameters) && is_array($parameters))
+            $endpoint .= $this->compileURL($parameters);
 
         return $this->doRequest('get', $endpoint);
     }
@@ -559,15 +738,8 @@ class PCRecruiter
     {
         $endpoint = '/placement/' . $id;
 
-        // If options is not empty and is array
-        if (!empty($parameters) && is_array($parameters)) {
-            // Append chart to endpoint
-            $endpoint .= '?';
-            // Then parse the array and create the url
-            foreach ($parameters as $key => $value) {
-                $endpoint .= $key . '=' . $value;
-            }
-        }
+        if (!empty($parameters) && is_array($parameters))
+            $endpoint .= $this->compileURL($parameters);
 
         return $this->doRequest('get', $endpoint);
     }
@@ -589,15 +761,8 @@ class PCRecruiter
     {
         $endpoint = '/interviews';
 
-        // If options is not empty and is array
-        if (!empty($parameters) && is_array($parameters)) {
-            // Append chart to endpoint
-            $endpoint .= '?';
-            // Then parse the array and create the url
-            foreach ($parameters as $key => $value) {
-                $endpoint .= $key . '=' . $value;
-            }
-        }
+        if (!empty($parameters) && is_array($parameters))
+            $endpoint .= $this->compileURL($parameters);
 
         return $this->doRequest('get', $endpoint);
     }
@@ -627,15 +792,8 @@ class PCRecruiter
     {
         $endpoint = '/interviews/' . $id;
 
-        // If options is not empty and is array
-        if (!empty($parameters) && is_array($parameters)) {
-            // Append chart to endpoint
-            $endpoint .= '?';
-            // Then parse the array and create the url
-            foreach ($parameters as $key => $value) {
-                $endpoint .= $key . '=' . $value;
-            }
-        }
+        if (!empty($parameters) && is_array($parameters))
+            $endpoint .= $this->compileURL($parameters);
 
         return $this->doRequest('get', $endpoint);
     }
