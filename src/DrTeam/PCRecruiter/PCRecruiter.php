@@ -18,8 +18,8 @@ class PCRecruiter
     /**
      * Initial state of some variables
      */
-    protected $params = array();
-    public $client;
+    public $_client;
+    public $_config;
 
     /**
      * Default server parameters
@@ -40,11 +40,39 @@ class PCRecruiter
     public $key;
 
     /**
-     * Class Constructor
+     * PCRecruiter constructor.
      */
     public function __construct()
     {
-        $this->client = new Client();
+        $this->_client = new Client();
+    }
+
+    /**
+     * Read the file with config
+     *
+     * @param   string $file Filename
+     * @param   bool $autoload Automatically apply the configuration
+     * @return  mixed
+     */
+    public function readConfig($file, $autoload = true)
+    {
+        if (file_exists($file)) {
+            $this->_config = require_once $file;
+            if ($autoload === true) $this->loadConfig();
+            return $this->_config;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Parse the incoming config
+     */
+    public function loadConfig()
+    {
+        if (!empty($this->_config) && is_array($this->_config))
+            foreach ($this->_config as $key => $value)
+                $this->$key = $value;
     }
 
     /**
@@ -74,19 +102,19 @@ class PCRecruiter
 
         switch ($type) {
             case 'get':
-                $result = $this->client->get($url, compact('headers'));
+                $result = $this->_client->get($url, compact('headers'));
                 break;
             case 'post':
                 $headers += ['Content-Type' => 'application/json'];
-                $result = $this->client->post($url, compact('headers', 'body'));
+                $result = $this->_client->post($url, compact('headers', 'body'));
                 break;
             case 'delete':
                 $headers += ['Content-Type' => 'application/json'];
-                $result = $this->client->delete($url, compact('headers', 'body'));
+                $result = $this->_client->delete($url, compact('headers', 'body'));
                 break;
             case 'put':
                 $headers += ['Content-Type' => 'application/json'];
-                $result = $this->client->put($url, compact('headers', 'body'));
+                $result = $this->_client->put($url, compact('headers', 'body'));
                 break;
             default:
                 $result = null;
