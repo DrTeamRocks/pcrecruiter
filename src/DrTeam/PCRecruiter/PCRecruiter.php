@@ -137,10 +137,10 @@ class PCRecruiter
     function compileURL($parameters)
     {
         // Init chart for endpoint
-        $endpoint = '?';
+        $endpoint = '?Query=';
         // Then parse the array and create the url
         foreach ($parameters as $key => $value) {
-            $endpoint .= $key . '=' . $value;
+            $endpoint .= $key . ' eq ' . $value ;
         }
 
         return $endpoint;
