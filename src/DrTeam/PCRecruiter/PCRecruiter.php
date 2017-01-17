@@ -97,10 +97,10 @@ class PCRecruiter
             'Authorization' => 'BEARER ' . $this->token
         );
 
-
+        // If request is not a GET
         if ($type != 'get') {
-            $key = current($params);
-            $headers[$key] = json_encode($params[$key]);
+            $key = key($params);
+            $body = json_encode($params[$key]);
         }
 
         switch ($type) {
@@ -109,15 +109,15 @@ class PCRecruiter
                 break;
             case 'post':
                 $headers += ['Content-Type' => 'application/json'];
-                $result = $this->_client->post($url, compact('headers'));
+                $result = $this->_client->post($url, compact('headers', 'body'));
                 break;
             case 'delete':
                 $headers += ['Content-Type' => 'application/json'];
-                $result = $this->_client->delete($url, compact('headers'));
+                $result = $this->_client->delete($url, compact('headers', 'body'));
                 break;
             case 'put':
                 $headers += ['Content-Type' => 'application/json'];
-                $result = $this->_client->put($url, compact('headers'));
+                $result = $this->_client->put($url, compact('headers', 'body'));
                 break;
             default:
                 $result = null;
