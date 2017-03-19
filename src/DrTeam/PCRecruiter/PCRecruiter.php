@@ -701,9 +701,10 @@ class PCRecruiter
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/positions.json
      * @param   string $id
+     * @param   array|null $parameters
      * @return  array|false
      */
-    public function getPositionsByID($id)
+    public function getPositionsByID($id, array $parameters = null)
     {
         $endpoint = '/positions/' . $id;
 
