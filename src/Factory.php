@@ -34,7 +34,8 @@ class Factory
     public $username;
     public $password;
     public $app_id;
-    public $app_key;
+    public $api_key;
+    public $company_id;
 
     /**
      * PCRecruiter constructor.
