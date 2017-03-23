@@ -8,6 +8,29 @@ PHP library for work with PCRecruiter RESTful API
 
 ## Examples
 
+### Get AccessToken for work with PCR 
+
+```php
+// Enable autoload
+require_once __DIR__ . "/vendor/autoload.php";
+
+// Get the token
+$token = new PCRecruiter\Token();
+$token->readConfig(__DIR__ . "/configs/pcr.php");
+
+// Get the token
+$token_response = $token->get();
+
+// Store result as array
+$token_result = $token_response['message'];
+
+// Return the json
+header('Content-Type: application/json');
+echo json_encode($token_result);
+```
+
+### Get all jobs (positions) from PCR 
+
 ```php
 // Enable autoload
 require_once __DIR__ . "/vendor/autoload.php";
