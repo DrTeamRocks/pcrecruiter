@@ -4,7 +4,7 @@
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/DrTeamRocks/pcrecruiter/master/LICENSE)
 
-PHP library for work with PCRecruiter Rest API
+PHP library for work with PCRecruiter RESTful API
 
 ```php
 // Enable the class
@@ -50,7 +50,7 @@ If you found the bug, please report about this on [GitHub Issues](https://github
 
 ## Developers
 
-* [Paul Rykov](https://github.com/PavelRykov)
+* [Paul Rock](https://github.com/EvilFreelancer)
 
 ## What inspired and some links
 
