@@ -1,12 +1,10 @@
 <?php namespace PCRecruiter;
 
-use PCRecruiter;
-
 /**
  * Class Companies
  * @package PCRecruiter
  */
-class Companies extends PCRecruiter
+class Companies extends Factory
 {
     /**
      * Search Company Records

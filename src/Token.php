@@ -1,12 +1,10 @@
 <?php namespace PCRecruiter;
 
-use PCRecruiter;
-
 /**
  * Class Token
- * @package PCRecruiter
+ * @package DrTeam\PCRecruiter
  */
-class Token extends PCRecruiter
+class Token extends Factory
 {
     /**
      * Retrieve a valid api session

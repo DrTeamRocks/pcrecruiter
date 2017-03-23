@@ -1,26 +1,24 @@
 <?php namespace PCRecruiter;
 
-use PCRecruiter;
-
 /**
- * Class Interviews
+ * Class Placements
  * @package PCRecruiter
  */
-class Interviews extends PCRecruiter
+class Placements extends Factory
 {
     /**
-     * Search Interview Records
+     * Search Placement Records
      *
-     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/interviews.json
+     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/placements.json
      *
-     * @param   string|null $id InterviewId
+     * @param   string|null $id PlacementId
      * @param   array $parameters
      *
      * @return  array|false
      */
     public function get($id = null, $parameters = array())
     {
-        $endpoint = '/interviews';
+        $endpoint = '/placement';
 
         if (!empty($id))
             $endpoint .= '/' . $id;
@@ -32,9 +30,9 @@ class Interviews extends PCRecruiter
     }
 
     /**
-     * Create a new Interview
+     * Create a new Placement
      *
-     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/interviews.json
+     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/placements.json
      *
      * @param   array $placements
      *
@@ -42,7 +40,7 @@ class Interviews extends PCRecruiter
      */
     public function post($placements = array())
     {
-        $endpoint = '/interviews';
+        $endpoint = '/placement';
 
         return $this->doRequest('post', $endpoint, array('Placement' => $placements));
     }

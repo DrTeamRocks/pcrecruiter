@@ -1,4 +1,4 @@
-<?php
+<?php namespace PCRecruiter;
 /**
  * @author Paul Rock <paul@drteam.rocks>
  * @link http://drteam.rocks
@@ -10,7 +10,7 @@ use GuzzleHttp\Client;
 /**
  * Class PCRecruiter for work with PCRecruiter RESTful API {@link https://www.pcrecruiter.net/apidocs_v2/}
  */
-class PCRecruiter
+class Factory
 {
     /**
      * Initial state of some variables
@@ -31,10 +31,10 @@ class PCRecruiter
      */
     public $token;
     public $database;
-    public $user;
-    public $pass;
-    public $app;
-    public $key;
+    public $username;
+    public $password;
+    public $app_id;
+    public $app_key;
 
     /**
      * PCRecruiter constructor.

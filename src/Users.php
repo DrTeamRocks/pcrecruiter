@@ -1,12 +1,10 @@
 <?php namespace PCRecruiter;
 
-use PCRecruiter;
-
 /**
  * Class Users
  * @package PCRecruiter
  */
-class Users extends PCRecruiter
+class Users extends Factory
 {
     /**
      * Show all users or search by username

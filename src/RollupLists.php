@@ -1,12 +1,10 @@
 <?php namespace PCRecruiter;
 
-use PCRecruiter;
-
 /**
  * Class RollupLists
  * @package PCRecruiter
  */
-class RollupLists extends PCRecruiter
+class RollupLists extends Factory
 {
     /**
      * Get all RollupLists or RollupList by Rollup Code
