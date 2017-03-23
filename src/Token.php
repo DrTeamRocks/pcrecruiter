@@ -2,7 +2,7 @@
 
 /**
  * Class Token
- * @package DrTeam\PCRecruiter
+ * @package PCRecruiter
  */
 class Token extends Factory
 {
@@ -17,16 +17,16 @@ class Token extends Factory
     {
         $endpoint = '/access-token?'
             . 'DatabaseId=' . $this->database . '&'
-            . 'Username=' . $this->user . '&'
-            . 'Password=' . $this->pass . '&'
-            . 'AppId=' . $this->app . '&'
-            . 'ApiKey=' . $this->key;
+            . 'Username=' . $this->username . '&'
+            . 'Password=' . $this->password . '&'
+            . 'AppId=' . $this->app_id . '&'
+            . 'ApiKey=' . $this->api_key;
 
         return $this->doRequest('get', $endpoint);
     }
 
     /**
-     * Log user off
+     * Log user off (delete current access token)
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/access-token.json
      *
