@@ -68,9 +68,15 @@ class Factory
      */
     public function loadConfig()
     {
-        if (!empty($this->_config) && is_array($this->_config))
-            foreach ($this->_config as $key => $value)
+        // If _config variable is exist and if this variable is array
+        if (!empty($this->_config) && is_array($this->_config)) {
+            // Read array and store into values
+            foreach ($this->_config as $key => $value) {
                 $this->$key = $value;
+            }
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -116,6 +122,12 @@ class Factory
             case 'put':
                 $headers += ['Content-Type' => 'application/json'];
                 $result = $this->_client->put($url, compact('headers', 'body'));
+                break;
+            // For phpunit tests
+            case 'test':
+                $headers += ['Content-Type' => 'application/json'];
+                $result = array($url, compact('headers', 'body'));
+                return $result;
                 break;
             default:
                 $result = null;

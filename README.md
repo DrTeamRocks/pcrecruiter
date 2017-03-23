@@ -76,6 +76,20 @@ If you need help with this project, you can read more about [API Methods](https:
 
 If you found the bug, please report about this on [GitHub Issues](https://github.com/DrTeamRocks/pcrecruiter/issues) page.
 
+## About PHP Unit Tests
+
+* [ ] Candidates.php
+* [ ] Companies.php
+* [x] Factory.php
+* [ ] Interviews.php
+* [ ] Placements.php
+* [ ] Positions.php
+* [ ] RollupLists.php
+* [ ] Token.php
+* [ ] Users.php
+
+You can run tests by hands from source directory via `vendor/bin/phpunit` command. 
+
 ## Developers
 
 * [Paul Rock](https://github.com/EvilFreelancer)
