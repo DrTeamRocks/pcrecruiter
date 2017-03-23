@@ -2,9 +2,12 @@
 
 use PCRecruiter;
 
+/**
+ * Class Token
+ * @package PCRecruiter
+ */
 class Token extends PCRecruiter
 {
-
     /**
      * Retrieve a valid api session
      *

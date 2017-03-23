@@ -2,6 +2,10 @@
 
 use PCRecruiter;
 
+/**
+ * Class Users
+ * @package PCRecruiter
+ */
 class Users extends PCRecruiter
 {
     /**

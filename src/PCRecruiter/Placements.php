@@ -2,9 +2,12 @@
 
 use PCRecruiter;
 
+/**
+ * Class Placements
+ * @package PCRecruiter
+ */
 class Placements extends PCRecruiter
 {
-
     /**
      * Search Placement Records
      *

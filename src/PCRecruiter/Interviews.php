@@ -2,9 +2,12 @@
 
 use PCRecruiter;
 
+/**
+ * Class Interviews
+ * @package PCRecruiter
+ */
 class Interviews extends PCRecruiter
 {
-
     /**
      * Search Interview Records
      *

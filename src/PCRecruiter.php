@@ -9,7 +9,6 @@ use GuzzleHttp\Client;
 
 /**
  * Class PCRecruiter for work with PCRecruiter RESTful API {@link https://www.pcrecruiter.net/apidocs_v2/}
- * @package DrTeam
  */
 class PCRecruiter
 {

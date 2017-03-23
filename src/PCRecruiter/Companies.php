@@ -2,9 +2,12 @@
 
 use PCRecruiter;
 
+/**
+ * Class Companies
+ * @package PCRecruiter
+ */
 class Companies extends PCRecruiter
 {
-
     /**
      * Search Company Records
      *

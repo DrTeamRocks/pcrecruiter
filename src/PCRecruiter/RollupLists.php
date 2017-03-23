@@ -2,9 +2,12 @@
 
 use PCRecruiter;
 
-class Rolluplists extends PCRecruiter
+/**
+ * Class RollupLists
+ * @package PCRecruiter
+ */
+class RollupLists extends PCRecruiter
 {
-
     /**
      * Get all RollupLists or RollupList by Rollup Code
      *
