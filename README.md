@@ -6,7 +6,7 @@
 [![Build Status](https://travis-ci.org/DrTeamRocks/pcrecruiter.svg?branch=master)](https://travis-ci.org/DrTeamRocks/pcrecruiter)
 [![Total Downloads](https://poser.pugx.org/drteam/pcrecruiter/downloads)](https://packagist.org/packages/drteam/pcrecruiter)
 [![License](https://poser.pugx.org/drteam/pcrecruiter/license)](https://packagist.org/packages/drteam/pcrecruiter)
-[![PHP 7 ready](https://php7ready.timesplinter.ch/{github-name}/{repo}/{branch}/badge.svg)](https://travis-ci.org/DrTeamRocks/pcrecruiter)
+[![PHP 7 ready](https://php7ready.timesplinter.ch/DrTeamRocks/pcrecruiter/master/badge.svg)](https://travis-ci.org/DrTeamRocks/pcrecruiter)
 
 PHP library for work with PCRecruiter RESTful API
 
