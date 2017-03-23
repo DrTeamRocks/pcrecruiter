@@ -3,6 +3,7 @@
 # PCRecruiter PHP
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/DrTeamRocks/pcrecruiter/master/LICENSE)
+[![Build Status](https://travis-ci.org/DrTeamRocks/pcrecruiter.svg?branch=master)](https://travis-ci.org/DrTeamRocks/pcrecruiter)
 
 PHP library for work with PCRecruiter RESTful API
 
