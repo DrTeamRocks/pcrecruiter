@@ -6,37 +6,42 @@
 
 PHP library for work with PCRecruiter RESTful API
 
+## Examples
+
 ```php
-// Enable the class
-$pcr = new PCRecruiter();
+// Enable autoload
+require_once __DIR__ . "/vendor/autoload.php";
 
-// Parameters for PCR
-$pcr->user = '[USERNAME]';
-$pcr->pass = '[PASSWORD]';
-$pcr->database = '[DBNAME].[POOLNAME]';
-$pcr->app = '[APPID]';
-$pcr->key = '[APIKEY]';
+// Get the token
+$token = new PCRecruiter\Token();
+$token->readConfig(__DIR__ . "/configs/pcr.php");
+// Get the token
+$token_response = $token->get();
 
-// Get token for current session
-$response = $pcr->getAccessToken();
-$pcr->token = $response['message']->SessionId;
+// Get all positions
+$positions = new PCRecruiter\Positions();
+$positions->token = $token_response['message']->SessionId;
+$positions_response = $positions->get();
 
-// Get all jobs from PCR board
-$response = $pcr->getPositions();
-$jobs = $response['message']->Results;
+// Store positions into value
+$positions_results = $positions_response['message']->Results;
+
+// Return the json
+header('Content-Type: application/json');
+echo json_encode($positions_results);
 ```
+
+Any other examples you can find on "[examples](https://github.com/DrTeamRocks/pcrecruiter-examples)" page.
 
 ## How to install
 
 ### Via composer
 
-* Stable release: `composer require drteam/pcrecruiter`
-
-* Unstable release: `composer require drteam/pcrecruiter "@dev"`
+`composer require drteam/pcrecruiter`
 
 ### Classic style
 
-* Download the [PCRecruiter](https://github.com/DrTeamRocks/pcrecruiter/releases) package
+* Download the latest [PCRecruiter](https://github.com/DrTeamRocks/pcrecruiter/releases) package
 
 * Extract the archive
 
