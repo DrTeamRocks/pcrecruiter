@@ -4,8 +4,14 @@
  * Class Companies
  * @package PCRecruiter
  */
-class Companies extends Factory
+class Companies extends Client
 {
+    public function __construct($token)
+    {
+        parent::__construct();
+        $this->token = $token;
+    }
+
     /**
      * Search Company Records
      *

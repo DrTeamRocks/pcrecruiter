@@ -4,8 +4,14 @@
  * Class Positions
  * @package PCRecruiter
  */
-class Positions extends Factory
+class Positions extends Client
 {
+    public function __construct($token)
+    {
+        parent::__construct();
+        $this->token = $token;
+    }
+
     /**
      * Search position records
      *

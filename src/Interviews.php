@@ -4,8 +4,14 @@
  * Class Interviews
  * @package PCRecruiter
  */
-class Interviews extends Factory
+class Interviews extends Client
 {
+    public function __construct($token)
+    {
+        parent::__construct();
+        $this->token = $token;
+    }
+
     /**
      * Search Interview Records
      *

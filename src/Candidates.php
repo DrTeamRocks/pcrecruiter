@@ -4,8 +4,14 @@
  * Class Candidates
  * @package PCRecruiter
  */
-class Candidates extends Factory
+class Candidates extends Client
 {
+    public function __construct($token)
+    {
+        parent::__construct();
+        $this->token = $token;
+    }
+
     /**
      * Search Candidate Records
      *

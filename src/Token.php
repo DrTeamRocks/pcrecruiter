@@ -4,8 +4,14 @@
  * Class Token
  * @package PCRecruiter
  */
-class Token extends Factory
+class Token extends Client
 {
+    public function __construct($token)
+    {
+        parent::__construct();
+        $this->token = $token;
+    }
+
     /**
      * Retrieve a valid api session
      *

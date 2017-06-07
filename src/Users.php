@@ -4,8 +4,14 @@
  * Class Users
  * @package PCRecruiter
  */
-class Users extends Factory
+class Users extends Client
 {
+    public function __construct($token)
+    {
+        parent::__construct();
+        $this->token = $token;
+    }
+
     /**
      * Show all users or search by username
      *

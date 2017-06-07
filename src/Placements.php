@@ -4,8 +4,14 @@
  * Class Placements
  * @package PCRecruiter
  */
-class Placements extends Factory
+class Placements extends Client
 {
+    public function __construct($token)
+    {
+        parent::__construct();
+        $this->token = $token;
+    }
+
     /**
      * Search Placement Records
      *

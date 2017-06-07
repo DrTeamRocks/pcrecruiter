@@ -4,8 +4,14 @@
  * Class RollupLists
  * @package PCRecruiter
  */
-class RollupLists extends Factory
+class RollupLists extends Client
 {
+    public function __construct($token)
+    {
+        parent::__construct();
+        $this->token = $token;
+    }
+
     /**
      * Get all RollupLists or RollupList by Rollup Code
      *
