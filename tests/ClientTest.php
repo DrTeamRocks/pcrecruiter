@@ -1,15 +1,15 @@
 <?php
 
-require_once(__DIR__ . '/../src/Factory.php');
+require_once(__DIR__ . '/../src/Client.php');
 
 use PHPUnit\Framework\TestCase;
-use PCRecruiter\Factory;
+use PCRecruiter\Client;
 
-class FactoryTest extends TestCase
+class ClientTest extends TestCase
 {
     public function testReadConfig()
     {
-        $factory = new Factory();
+        $factory = new Client();
         $config = __DIR__ . '/pcr.example.php';
 
         // Check if script can read file
@@ -18,7 +18,7 @@ class FactoryTest extends TestCase
 
     public function testLoadConfig()
     {
-        $factory = new Factory();
+        $factory = new Client();
         $factory->_config = include __DIR__ . '/pcr.example.php';
 
         // Check if script can load the file
@@ -27,7 +27,7 @@ class FactoryTest extends TestCase
 
     public function testDoRequest()
     {
-        $factory = new Factory();
+        $factory = new Client();
 
         // Check if request return the array
         $result = $factory->doRequest('test', 'test', array('test' => 'test'));
@@ -36,7 +36,7 @@ class FactoryTest extends TestCase
 
     public function testIsMulti()
     {
-        $factory = new Factory();
+        $factory = new Client();
 
         // Check if array is not multidimensional
         $this->assertFalse($factory->isMulti(array()));
@@ -47,7 +47,7 @@ class FactoryTest extends TestCase
 
     public function testCompileURL()
     {
-        $factory = new Factory();
+        $factory = new Client();
 
         // One dimensional check
         $this->assertTrue($factory->compileURL(['test' => 'test']) == '?Query=test eq test');
