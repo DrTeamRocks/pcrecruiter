@@ -5,8 +5,6 @@
  * @license MIT
  */
 
-use GuzzleHttp\Client;
-
 /**
  * Class PCRecruiter for work with PCRecruiter RESTful API {@link https://www.pcrecruiter.net/apidocs_v2/}
  */
@@ -42,7 +40,7 @@ class Client
      */
     public function __construct()
     {
-        $this->_client = new Client();
+        $this->_client = new \GuzzleHttp\Client();
     }
 
     /**
