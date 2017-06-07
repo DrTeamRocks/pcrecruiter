@@ -19,18 +19,15 @@ PHP library for work with PCRecruiter RESTful API
 require_once __DIR__ . "/vendor/autoload.php";
 
 // Get the token
-$token = new PCRecruiter\Token();
-$token->readConfig(__DIR__ . "/configs/pcr.php");
+$pcr_token = new PCRecruiter\Token();
+$pcr_token->readConfig(__DIR__ . "/configs/pcr.php");
 
 // Get the token
-$token_response = $token->get();
-
-// Store result as array
-$token_result = $token_response['message'];
+$token = $pcr_token->get()['message']->SessionId;
 
 // Return the json
 header('Content-Type: application/json');
-echo json_encode($token_result);
+echo json_encode($token);
 ```
 
 ### Get all jobs (positions) from PCR 
@@ -40,22 +37,19 @@ echo json_encode($token_result);
 require_once __DIR__ . "/vendor/autoload.php";
 
 // Get the token
-$token = new PCRecruiter\Token();
-$token->readConfig(__DIR__ . "/configs/pcr.php");
+$pcr_token = new PCRecruiter\Token();
+$pcr_token->readConfig(__DIR__ . "/configs/pcr.php");
+
 // Get the token
-$token_response = $token->get();
+$token = $pcr_token->get()['message']->SessionId;
 
 // Get all positions
-$positions = new PCRecruiter\Positions();
-$positions->token = $token_response['message']->SessionId;
-$positions_response = $positions->get();
-
-// Store positions into value
-$positions_results = $positions_response['message']->Results;
+$pcr_positions = new PCRecruiter\Positions($token);
+$positions = $positions->get()['message']->Results;
 
 // Return the json
 header('Content-Type: application/json');
-echo json_encode($positions_results);
+echo json_encode($positions);
 ```
 
 Any other examples you can find on "[examples](https://github.com/DrTeamRocks/pcrecruiter-examples)" page.
