@@ -8,12 +8,10 @@ class Token extends Client
 {
     /**
      * Token constructor.
-     * @param string $token - PCR token for work with system
      */
-    public function __construct($token)
+    public function __construct()
     {
         parent::__construct();
-        $this->token = $token;
     }
 
     /**
