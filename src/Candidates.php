@@ -57,6 +57,20 @@ class Candidates extends Client
     }
 
     /**
+     * Update a candidate by id (alias for post)
+     *
+     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
+     * @param   null|string $id
+     * @param   array $candidate Array with candidate descriptions
+     *
+     * @return  array|false
+     */
+    public function put($id, $candidate = array())
+    {
+        return $this->post($id, $candidate);
+    }
+
+    /**
      * Delete Candidate by Id
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
