@@ -6,6 +6,10 @@
  */
 class Interviews extends Client
 {
+    /**
+     * Interviews constructor.
+     * @param string $token - PCR token for work with system
+     */
     public function __construct($token)
     {
         parent::__construct();

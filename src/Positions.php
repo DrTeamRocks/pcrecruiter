@@ -6,6 +6,10 @@
  */
 class Positions extends Client
 {
+    /**
+     * Positions constructor.
+     * @param string $token - PCR token for work with system
+     */
     public function __construct($token)
     {
         parent::__construct();
@@ -64,8 +68,7 @@ class Positions extends Client
     public function put($id, $positions = array())
     {
         $endpoint = '/positions/' . $id;
-
-        return $this->doRequest('get', $endpoint, array('Position' => $positions));
+        return $this->doRequest('put', $endpoint, array('Position' => $positions));
     }
 
     /**
@@ -82,7 +85,7 @@ class Positions extends Client
         if (!empty($parameters) && is_array($parameters))
             $endpoint .= $this->compileURL($parameters);
 
-        return $this->doRequest('get', $endpoint);
+        return $this->doRequest('delete', $endpoint);
     }
 
 }
