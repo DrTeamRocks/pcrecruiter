@@ -196,6 +196,12 @@ class Client
                         }
                         break;
 
+                    // Per page results count and page number
+                    case 'resultsperpage':
+                    case 'page':
+                        $endpoint .= $value;
+                        break;
+
                     // Create a simple query
                     default:
                         $step = 0;
