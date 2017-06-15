@@ -163,63 +163,54 @@ class Client
         // Initial endpoint
         $endpoint = '';
 
-        // Check for multidementional array
-        if ($this->isMulti($parameters)) {
+        // Element of array
+        $el = 0;
 
-            // Element of array
-            $el = 0;
+        // Generte url from parameters
+        foreach ($parameters as $key => $value) {
 
-            // Generte url from parameters
-            foreach ($parameters as $key => $value) {
+            // Work mode
+            $mode = mb_strtolower($key);
 
-                // Work mode
-                $mode = mb_strtolower($key);
+            // If we have parameters
+            if ($el == 0) {
+                $endpoint .= '?' . ucfirst($mode) . '=';
+                $el++;
+            } else {
+                $endpoint .= '&' . ucfirst($mode) . '=';
+            }
 
-                // If we have parameters
-                if ($el == 0) {
-                    $endpoint .= '?' . ucfirst($mode) . '=';
-                    $el++;
-                } else {
-                    $endpoint .= '&' . ucfirst($mode) . '=';
-                }
+            // Choose the work mode by key
+            switch ($mode) {
 
-                // Choose the work mode by key
-                switch ($mode) {
+                // Create a search query
+                case 'query':
+                    $step = 0;
+                    foreach ($value as $key2 => $value2) {
+                        if ($step != 0) $comma = ','; else $comma = null;
+                        $endpoint .= $comma . $key2 . ' eq ' . $value2;
+                        $step++;
+                    }
+                    break;
 
-                    // Create a search query
-                    case 'query':
-                        $step = 0;
-                        foreach ($value as $key2 => $value2) {
-                            if ($step != 0) $comma = ','; else $comma = null;
-                            $endpoint .= $comma . $key2 . ' eq ' . $value2;
-                            $step++;
-                        }
-                        break;
+                // Per page results count and page number
+                case 'resultsperpage':
+                case 'page':
+                    $endpoint .= $value;
+                    break;
 
-                    // Per page results count and page number
-                    case 'resultsperpage':
-                    case 'page':
-                        $endpoint .= $value;
-                        break;
-
-                    // Create a simple query
-                    default:
-                        $step = 0;
-                        foreach ($value as $key2 => $value2) {
-                            if ($step != 0) $comma = ','; else $comma = null;
-                            $endpoint .= $comma . $value2;
-                            $step++;
-                        }
-                        break;
-
-                }
+                // Create a simple query
+                default:
+                    $step = 0;
+                    foreach ($value as $key2 => $value2) {
+                        if ($step != 0) $comma = ','; else $comma = null;
+                        $endpoint .= $comma . $value2;
+                        $step++;
+                    }
+                    break;
 
             }
-        } else {
-            // Init chart for endpoint
-            $endpoint = '?Query=';
-            // Then parse the array and create the url
-            foreach ($parameters as $key => $value) $endpoint .= $key . ' eq ' . $value;
+
         }
 
         // Return data
