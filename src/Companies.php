@@ -51,6 +51,7 @@ class Companies extends Client
     public function post($positions = array())
     {
         $endpoint = '/companies';
+
         return $this->doRequest('post', $endpoint, array('Position' => $positions));
     }
 
@@ -67,6 +68,7 @@ class Companies extends Client
     public function put($id, $positions = array())
     {
         $endpoint = '/companies/' . $id;
+
         return $this->doRequest('get', $endpoint, array('Position' => $positions));
     }
 
