@@ -45,23 +45,19 @@ class Candidates extends Client
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
      *
-     * @param   null|string $id
      * @param   array $candidate Array with candidate descriptions
      *
      * @return  array|false
      */
-    public function post($id = null, $candidate = array())
+    public function post($candidate = array())
     {
         $endpoint = '/candidates';
-
-        if (!empty($id))
-            $endpoint .= '/' . $id;
 
         return $this->doRequest('post', $endpoint, array('Candidate' => $candidate));
     }
 
     /**
-     * Update a candidate by id (alias for post)
+     * Update a candidate details by id
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
      * @param   null|string $id
@@ -71,7 +67,9 @@ class Candidates extends Client
      */
     public function put($id, $candidate = array())
     {
-        return $this->post($id, $candidate);
+        $endpoint = '/candidates/' . $id;
+
+        return $this->doRequest('get', $endpoint, array('Candidate' => $candidate));
     }
 
     /**
