@@ -49,9 +49,6 @@ class ClientTest extends TestCase
     {
         $factory = new Client();
 
-        // One dimensional check
-        $this->assertTrue($factory->compileURL(['test' => 'test']) == '?Query=test eq test');
-
         // Multidimensional check 1
         $this->assertTrue($factory->compileURL(['query' => ['test' => 'test']]) == '?Query=test eq test');
 
