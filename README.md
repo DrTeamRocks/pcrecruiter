@@ -1,4 +1,4 @@
-![PCRecruiter PHP API Logo](http://drteam.rocks/images/pcrecruter/prc_api.png)
+![PCRecruiter PHP API Logo](http://drteam.rocks/images/pcrecruter/pcr_api.png)
 
 # PCRecruiter PHP
 
