@@ -69,7 +69,7 @@ class Companies extends Client
     {
         $endpoint = '/companies/' . $id;
 
-        return $this->doRequest('get', $endpoint, array('Position' => $positions));
+        return $this->doRequest('put', $endpoint, array('Position' => $positions));
     }
 
     /**
@@ -88,6 +88,6 @@ class Companies extends Client
         if (!empty($parameters) && is_array($parameters))
             $endpoint .= $this->compileURL($parameters);
 
-        return $this->doRequest('get', $endpoint);
+        return $this->doRequest('delete', $endpoint);
     }
 }

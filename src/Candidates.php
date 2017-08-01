@@ -69,7 +69,7 @@ class Candidates extends Client
     {
         $endpoint = '/candidates/' . $id;
 
-        return $this->doRequest('get', $endpoint, array('Candidate' => $candidate));
+        return $this->doRequest('put', $endpoint, array('Candidate' => $candidate));
     }
 
     /**
@@ -88,7 +88,7 @@ class Candidates extends Client
         if (!empty($parameters) && is_array($parameters))
             $endpoint .= $this->compileURL($parameters);
 
-        return $this->doRequest('get', $endpoint);
+        return $this->doRequest('delete', $endpoint);
     }
 
     /**

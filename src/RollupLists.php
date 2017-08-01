@@ -67,6 +67,6 @@ class RollupLists extends Client
     {
         $endpoint = '/positions/' . $id;
 
-        return $this->doRequest('get', $endpoint, array('RollupLists' => $positions));
+        return $this->doRequest('put', $endpoint, array('RollupLists' => $positions));
     }
 }
