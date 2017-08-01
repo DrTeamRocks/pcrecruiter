@@ -20,10 +20,8 @@ class Interviews extends Client
      * Search Interview Records
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/interviews.json
-     *
      * @param   string|null $id InterviewId
      * @param   array $parameters
-     *
      * @return  array|false
      */
     public function get($id = null, $parameters = array())
@@ -43,16 +41,14 @@ class Interviews extends Client
      * Create a new Interview
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/interviews.json
-     *
      * @param   array $placements
-     *
      * @return  array|false
      */
-    public function post($placements = array())
+    public function post($interviews = array())
     {
         $endpoint = '/interviews';
 
-        return $this->doRequest('post', $endpoint, array('Placement' => $placements));
+        return $this->doRequest('post', $endpoint, array('Interview' => $interviews));
     }
 
 }

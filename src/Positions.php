@@ -20,10 +20,8 @@ class Positions extends Client
      * Search position records
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/positions.json
-     *
      * @param   string|null $id PositionId
      * @param   array $parameters
-     *
      * @example $parameters = array('Query' => 'some_query', 'Order' => 'name', 'ResultsPerPage' => '10')
      * @return  array|false
      */
@@ -44,9 +42,7 @@ class Positions extends Client
      * Create a new Position
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/positions.json
-     *
      * @param   array $positions
-     *
      * @return  array|false
      */
     public function post($positions = array())
@@ -59,10 +55,8 @@ class Positions extends Client
      * Update a Position by JobId
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/positions.json
-     *
      * @param   string $id
      * @param   array $positions
-     *
      * @return  array|false
      */
     public function put($id, $positions = array())
@@ -75,7 +69,6 @@ class Positions extends Client
      * Delete Position by JobId
      *
      * @param   string $id
-     *
      * @return  array|false
      */
     public function delete($id)

@@ -20,10 +20,8 @@ class Companies extends Client
      * Search Company Records
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/companies.json
-     *
      * @param   string|null $id
      * @param   array $parameters
-     *
      * @return  array|false
      */
     public function getCompanies($id = null, $parameters = array())
@@ -59,10 +57,8 @@ class Companies extends Client
      * Update a Company by CompanyId
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/companies.json
-     *
      * @param   string $id
      * @param   array $positions
-     *
      * @return  array|false
      */
     public function put($id, $positions = array())
@@ -76,9 +72,7 @@ class Companies extends Client
      * Delete Company by Id
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/companies.json
-     *
      * @param   string $id
-     *
      * @return  array|false
      */
     public function delete($id)

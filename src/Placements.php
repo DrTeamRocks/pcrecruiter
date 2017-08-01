@@ -20,10 +20,8 @@ class Placements extends Client
      * Search Placement Records
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/placements.json
-     *
      * @param   string|null $id PlacementId
      * @param   array $parameters
-     *
      * @return  array|false
      */
     public function get($id = null, $parameters = array())
@@ -43,16 +41,14 @@ class Placements extends Client
      * Create a new Placement
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/placements.json
-     *
      * @param   array $placements
-     *
      * @return  array|false
      */
-    public function post($placements = array())
+    public function post($placement = array())
     {
         $endpoint = '/placement';
 
-        return $this->doRequest('post', $endpoint, array('Placement' => $placements));
+        return $this->doRequest('post', $endpoint, array('Placement' => $placement));
     }
 
 }

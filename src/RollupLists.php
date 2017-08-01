@@ -20,10 +20,8 @@ class RollupLists extends Client
      * Get all RollupLists or RollupList by Rollup Code
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/rolluplists.json
-     *
      * @param   string|null $code RollupCode
      * @param   array $parameters
-     *
      * @return  array|false
      */
     public function get($code = null, $parameters = array())
@@ -43,9 +41,7 @@ class RollupLists extends Client
      * Create a new RollupLists
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/rolluplists.json
-     *
      * @param   array $placements
-     *
      * @return  array|false
      */
     public function post($placements = array())
@@ -60,12 +56,11 @@ class RollupLists extends Client
      *
      * @param   $code
      * @param   array $positions
-     *
      * @return  array|false
      */
     public function put($code, $positions = array())
     {
-        $endpoint = '/positions/' . $id;
+        $endpoint = '/rolluplists/' . $id;
 
         return $this->doRequest('put', $endpoint, array('RollupLists' => $positions));
     }

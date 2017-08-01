@@ -20,10 +20,8 @@ class Candidates extends Client
      * Search Candidate Records
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
-     *
      * @param   null|string $id
      * @param   array $parameters
-     *
      * @example $parameters = array('Query' => 'some_query', 'Custom' => 'some_field', 'ResultsPerPage' => '10')
      * @return  array|false
      */
@@ -44,9 +42,7 @@ class Candidates extends Client
      * Create a new Candidate
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
-     *
      * @param   array $candidate Array with candidate descriptions
-     *
      * @return  array|false
      */
     public function post($candidate = array())
@@ -62,7 +58,6 @@ class Candidates extends Client
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
      * @param   null|string $id
      * @param   array $candidate Array with candidate descriptions
-     *
      * @return  array|false
      */
     public function put($id, $candidate = array())
@@ -76,9 +71,7 @@ class Candidates extends Client
      * Delete Candidate by Id
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
-     *
      * @param   string $id CandidateId
-     *
      * @return  array|false
      */
     public function delete($id)
@@ -95,11 +88,9 @@ class Candidates extends Client
      * Get Attachments by CandidateId
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
-     *
      * @param   string $cid CandidateId
      * @param   null|string $aid AttachmentId
      * @param   array $parameters
-     *
      * @return  array|false
      */
     public function getAttachments($cid, $aid = null, $parameters = array())
@@ -119,11 +110,9 @@ class Candidates extends Client
      * Create a new Candidate Attachment
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
-     *
      * @param   string $cid CandidateId
      * @param   null|string $aid AttachmentId
      * @param   array $attachments
-     *
      * @return  array|false
      */
     public function postAttachments($cid, $aid = null, $attachments = array())
@@ -140,11 +129,9 @@ class Candidates extends Client
      * Update a Candidate Attachment
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
-     *
      * @param   string $cid CandidateId
      * @param   string $aid AttachmentId
      * @param   array $attachments Candidate Attachments Body
-     *
      * @return  array|false
      */
     public function putAttachments($cid, $aid, $attachments = array())
@@ -158,10 +145,8 @@ class Candidates extends Client
      * Search Candidate Activities by CandidateId
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
-     *
      * @param   string $id CandidateId
      * @param   array $parameters
-     *
      * @return  array|false
      */
     public function getActivities($id, $parameters = array())
@@ -178,10 +163,8 @@ class Candidates extends Client
      * Create a new Candidate Activity
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
-     *
      * @param   string $id CandidateId
      * @param   array $activity
-     *
      * @return  array|false
      */
     public function postActivities($id, $activity = array())
@@ -195,10 +178,8 @@ class Candidates extends Client
      * Return a Candidate's Resume
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
-     *
      * @param   string $id CandidateId
      * @param   array $parameters
-     *
      * @return  array|false
      */
     public function getResumes($id, $parameters = array())
@@ -215,10 +196,8 @@ class Candidates extends Client
      * Create a new Candidate Resume
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
-     *
      * @param   string $id CandidateId
      * @param   array $resume
-     *
      * @return  array|false
      */
     public function postResumes($id, $resume = array())
@@ -232,10 +211,8 @@ class Candidates extends Client
      * Update Candidate Resume
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
-     *
      * @param   string $id CandidateId
      * @param   array $resume
-     *
      * @return  array|false
      */
     public function putResumes($id, $resume = array())
@@ -249,10 +226,8 @@ class Candidates extends Client
      * Return a Candidate's Blinded Resume
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
-     *
      * @param   string $id CandidateId
      * @param   array $parameters
-     *
      * @return  array|false
      */
     public function getBlinded($id, $parameters = array())
@@ -269,10 +244,8 @@ class Candidates extends Client
      * Create a new Candidate Blinded Resume
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
-     *
      * @param   string $id CandidateId
      * @param   array $resume
-     *
      * @return  array|false
      */
     public function postBlinded($id, $resume = array())
@@ -286,10 +259,8 @@ class Candidates extends Client
      * Update Candidate Blinded Resume
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
-     *
      * @param   string $id CandidateId
      * @param   array $resume
-     *
      * @return  array|false
      */
     public function putBlinded($id, $resume = array())
@@ -303,10 +274,8 @@ class Candidates extends Client
      * Search Candidate Activities
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
-     *
      * @param   null|string $id ActivityId
      * @param   array $parameters
-     *
      * @return  array|false
      */
     public function getActivitiesAll($id = null, $parameters = array())
@@ -326,9 +295,7 @@ class Candidates extends Client
      * Get Distinct Fields
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
-     *
      * @param   array $parameters
-     *
      * @return  array|false
      */
     public function getDistinctFields($parameters = array())
