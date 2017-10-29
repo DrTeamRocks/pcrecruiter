@@ -14,7 +14,7 @@ class Interviews extends Client
      * @param   array $parameters
      * @return  array|false
      */
-    public function get($id = null, $parameters = array())
+    public function get($id = null, $parameters = [])
     {
         $endpoint = '/interviews';
 
@@ -31,10 +31,10 @@ class Interviews extends Client
      * Create a new Interview
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/interviews.json
-     * @param   array $placements
+     * @param   array $interviews
      * @return  array|false
      */
-    public function post($interviews = array())
+    public function create($interviews = [])
     {
         $endpoint = '/interviews';
 

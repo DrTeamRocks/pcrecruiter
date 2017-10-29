@@ -10,6 +10,9 @@
 
 PHP library for work with PCRecruiter RESTful API
 
+    composer require drteam/pcrecruiter
+
+
 ## Examples
 
 ### Get AccessToken for work with PCR 
@@ -18,9 +21,9 @@ PHP library for work with PCRecruiter RESTful API
 // Enable autoload
 require_once __DIR__ . "/vendor/autoload.php";
 
-// Get the token
+// Create the Token object
 $pcr_token = new PCRecruiter\Token();
-$pcr_token->readConfig(__DIR__ . "/configs/pcr.php");
+$pcr_token->setConfig(__DIR__ . "/pcr.php");
 
 // Get the token
 $token = $pcr_token->get()['message']->SessionId;
@@ -38,7 +41,7 @@ require_once __DIR__ . "/vendor/autoload.php";
 
 // Get the token
 $pcr_token = new PCRecruiter\Token();
-$pcr_token->readConfig(__DIR__ . "/configs/pcr.php");
+$pcr_token->setConfig(__DIR__ . "/pcr.php");
 
 // Get the token
 $token = $pcr_token->get()['message']->SessionId;
@@ -52,21 +55,7 @@ header('Content-Type: application/json');
 echo json_encode($positions);
 ```
 
-Any other examples you can find on "[examples](https://github.com/DrTeamRocks/pcrecruiter-examples)" page.
-
-## How to install
-
-### Via composer
-
-`composer require drteam/pcrecruiter`
-
-### Classic style
-
-* Download the latest [PCRecruiter](https://github.com/DrTeamRocks/pcrecruiter/releases) package
-
-* Extract the archive
-
-* Initiate the styles and scripts, just run `composer update` from directory with sources
+Any other examples you can find on "[examples](https://github.com/DrTeamRocks/pcrecruiter/tree/master/extra)" page.
 
 ## Where to get help
 
@@ -78,7 +67,7 @@ If you found the bug, please report about this on [GitHub Issues](https://github
 
 * [ ] Candidates.php
 * [ ] Companies.php
-* [x] Factory.php
+* [x] Client.php
 * [ ] Interviews.php
 * [ ] Placements.php
 * [ ] Positions.php
@@ -97,7 +86,5 @@ You can run tests by hands from source directory via `vendor/bin/phpunit` comman
 Created under the influence the lack of such a project on the Internet :smile:
 
 * [PCRecruiter](https://www.pcrecruiter.net/) - This company provides a lots of services that can be useful for recruitment agencies.
-
 * [PCRecruiter API](https://www.pcrecruiter.net/apidocs_v2/) - Official documentation about all API calls.
-
 * [Guzzle](https://github.com/guzzle/guzzle) - An extensible PHP HTTP client, what i very like.

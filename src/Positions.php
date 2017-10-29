@@ -15,7 +15,7 @@ class Positions extends Client
      * @example $parameters = array('Query' => 'some_query', 'Order' => 'name', 'ResultsPerPage' => '10')
      * @return  array|false
      */
-    public function get($id = null, $parameters = array())
+    public function get($id = null, $parameters = [])
     {
         $endpoint = '/positions';
 
@@ -35,7 +35,7 @@ class Positions extends Client
      * @param   array $positions
      * @return  array|false
      */
-    public function post($positions = array())
+    public function create($positions = [])
     {
         $endpoint = '/positions';
         return $this->doRequest('post', $endpoint, array('Position' => $positions));
@@ -49,7 +49,7 @@ class Positions extends Client
      * @param   array $positions
      * @return  array|false
      */
-    public function put($id, $positions = array())
+    public function update($id, $positions = [])
     {
         $endpoint = '/positions/' . $id;
         return $this->doRequest('put', $endpoint, array('Position' => $positions));

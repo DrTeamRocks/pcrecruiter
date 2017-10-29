@@ -107,10 +107,10 @@ class Client implements ClientInterface
      *
      * @param   string $type Request method
      * @param   string $endpoint Api request endpoint
-     * @param   array $params Parameters
+     * @param   array $parameters Array of parameters for query into API
      * @return  array|false Array with data or error, or False when something went fully wrong
      */
-    public function doRequest($type, $endpoint, $params = array())
+    public function doRequest($type, $endpoint, $parameters = [])
     {
         // Detect the default protocol
         $http_proto = self::useSSL ? 'https' : 'http';
@@ -126,8 +126,8 @@ class Client implements ClientInterface
 
         // If request is not a GET
         if ($type != 'get') {
-            $key = key($params);
-            $body = json_encode($params[$key]);
+            $key = key($parameters);
+            $body = json_encode($parameters[$key]);
         }
 
         switch ($type) {

@@ -7,14 +7,14 @@
 class Companies extends Client
 {
     /**
-     * Search Company Records
+     * Search Company of get a Company by CompanyId
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/companies.json
-     * @param   string|null $id
-     * @param   array $parameters
+     * @param   string|null $id - CompanyId
+     * @param   array $parameters - List of parameters for query
      * @return  array|false
      */
-    public function getCompanies($id = null, $parameters = array())
+    public function get($id = null, $parameters = [])
     {
         $endpoint = '/companies';
 
@@ -31,31 +31,29 @@ class Companies extends Client
      * Create a new Company
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/companies.json
-     *
-     * @param   array $positions
-     *
+     * @param   array $companies - The company to create
      * @return  array|false
      */
-    public function post($positions = array())
+    public function create($companies = [])
     {
         $endpoint = '/companies';
 
-        return $this->doRequest('post', $endpoint, array('Position' => $positions));
+        return $this->doRequest('post', $endpoint, array('Company' => $companies));
     }
 
     /**
      * Update a Company by CompanyId
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/companies.json
-     * @param   string $id
-     * @param   array $positions
+     * @param   string $id - CompanyId
+     * @param   array $companies - The company to update
      * @return  array|false
      */
-    public function put($id, $positions = array())
+    public function update($id, $companies = [])
     {
         $endpoint = '/companies/' . $id;
 
-        return $this->doRequest('put', $endpoint, array('Position' => $positions));
+        return $this->doRequest('put', $endpoint, array('Company' => $companies));
     }
 
     /**

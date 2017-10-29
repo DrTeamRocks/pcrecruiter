@@ -7,36 +7,6 @@
 class RollupLists extends Client
 {
     /**
-     * Search Rollup Lists
-     *
-     * @param   array $params - List of parameters for query
-     * @return  array|false
-     */
-    public function search($params = array())
-    {
-        $endpoint = '/rolluplists';
-
-        if (!empty($params) && is_array($params))
-            $endpoint .= $this->compileURL($params);
-
-        return $this->doRequest('get', $endpoint);
-    }
-
-    /**
-     * Create a new RollupLists
-     *
-     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/rolluplists.json
-     * @param   array $params - The RollupList to create
-     * @return  array|false
-     */
-    public function post($params = array())
-    {
-        $endpoint = '/rolluplists';
-
-        return $this->doRequest('post', $endpoint, array('RollupLists' => $params));
-    }
-
-    /**
      * Get RollupList by Rollup Code
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/rolluplists.json
@@ -44,7 +14,7 @@ class RollupLists extends Client
      * @param   array $params - List of parameters for query
      * @return  array|false
      */
-    public function get($code = null, $params = array())
+    public function get($code = null, $params = [])
     {
         $endpoint = '/rolluplists';
 
@@ -58,17 +28,31 @@ class RollupLists extends Client
     }
 
     /**
+     * Create a new RollupLists
+     *
+     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/rolluplists.json
+     * @param   array $rolluplists - The RollupList to create
+     * @return  array|false
+     */
+    public function create($rolluplists = [])
+    {
+        $endpoint = '/rolluplists';
+
+        return $this->doRequest('post', $endpoint, array('RollupLists' => $rolluplists));
+    }
+
+    /**
      * Update a RollupLists
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/rolluplists.json
      * @param   int $code - The RollupCode of the Rollup Record that needs to be updated.
-     * @param   array $params - The Rollup List to update
+     * @param   array $rolluplists - The Rollup List to update
      * @return  array|false
      */
-    public function put($code, $params = array())
+    public function update($code, $rolluplists = [])
     {
         $endpoint = '/rolluplists/' . $code;
 
-        return $this->doRequest('put', $endpoint, array('RollupLists' => $params));
+        return $this->doRequest('put', $endpoint, array('RollupLists' => $rolluplists));
     }
 }

@@ -15,7 +15,7 @@ class Candidates extends Client
      * @example $parameters = array('Query' => 'some_query', 'Custom' => 'some_field', 'ResultsPerPage' => '10')
      * @return  array|false
      */
-    public function get($id = null, $parameters = array())
+    public function get($id = null, $parameters = [])
     {
         $endpoint = '/candidates';
 
@@ -32,10 +32,10 @@ class Candidates extends Client
      * Create a new Candidate
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
-     * @param   array $candidate Array with candidate descriptions
+     * @param   array $candidate - Array with candidate descriptions
      * @return  array|false
      */
-    public function post($candidate = array())
+    public function create($candidate = [])
     {
         $endpoint = '/candidates';
 
@@ -47,10 +47,10 @@ class Candidates extends Client
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/candidates.json
      * @param   null|string $id
-     * @param   array $candidate Array with candidate descriptions
+     * @param   array $candidate - Array with candidate descriptions
      * @return  array|false
      */
-    public function put($id, $candidate = array())
+    public function update($id, $candidate = [])
     {
         $endpoint = '/candidates/' . $id;
 
@@ -83,7 +83,7 @@ class Candidates extends Client
      * @param   array $parameters
      * @return  array|false
      */
-    public function getAttachments($cid, $aid = null, $parameters = array())
+    public function getAttachments($cid, $aid = null, $parameters = [])
     {
         $endpoint = '/candidates/' . $cid . '/attachments';
 
@@ -105,7 +105,7 @@ class Candidates extends Client
      * @param   array $attachments
      * @return  array|false
      */
-    public function postAttachments($cid, $aid = null, $attachments = array())
+    public function createAttachments($cid, $aid = null, $attachments = [])
     {
         $endpoint = '/candidates/' . $cid . '/attachments';
 
@@ -124,7 +124,7 @@ class Candidates extends Client
      * @param   array $attachments Candidate Attachments Body
      * @return  array|false
      */
-    public function putAttachments($cid, $aid, $attachments = array())
+    public function updateAttachments($cid, $aid, $attachments = [])
     {
         $endpoint = '/candidates/' . $cid . '/attachments/' . $aid;
 
@@ -139,7 +139,7 @@ class Candidates extends Client
      * @param   array $parameters
      * @return  array|false
      */
-    public function getActivities($id, $parameters = array())
+    public function getActivities($id, $parameters = [])
     {
         $endpoint = '/candidates/' . $id . '/activities';
 
@@ -157,7 +157,7 @@ class Candidates extends Client
      * @param   array $activity
      * @return  array|false
      */
-    public function postActivities($id, $activity = array())
+    public function createActivities($id, $activity = [])
     {
         $endpoint = '/candidates/' . $id . '/activities';
 
@@ -172,7 +172,7 @@ class Candidates extends Client
      * @param   array $parameters
      * @return  array|false
      */
-    public function getResumes($id, $parameters = array())
+    public function getResumes($id, $parameters = [])
     {
         $endpoint = '/candidates/' . $id . '/resumes';
 
@@ -190,7 +190,7 @@ class Candidates extends Client
      * @param   array $resume
      * @return  array|false
      */
-    public function postResumes($id, $resume = array())
+    public function createResumes($id, $resume = [])
     {
         $endpoint = '/candidates/' . $id . '/resumes';
 
@@ -205,7 +205,7 @@ class Candidates extends Client
      * @param   array $resume
      * @return  array|false
      */
-    public function putResumes($id, $resume = array())
+    public function updateResumes($id, $resume = [])
     {
         $endpoint = '/candidates/' . $id . '/resumes';
 
@@ -220,7 +220,7 @@ class Candidates extends Client
      * @param   array $parameters
      * @return  array|false
      */
-    public function getBlinded($id, $parameters = array())
+    public function getBlinded($id, $parameters = [])
     {
         $endpoint = '/candidates/' . $id . '/blindedresumes';
 
@@ -238,7 +238,7 @@ class Candidates extends Client
      * @param   array $resume
      * @return  array|false
      */
-    public function postBlinded($id, $resume = array())
+    public function createBlinded($id, $resume = [])
     {
         $endpoint = '/candidates/' . $id . '/blindedresumes';
 
@@ -253,7 +253,7 @@ class Candidates extends Client
      * @param   array $resume
      * @return  array|false
      */
-    public function putBlinded($id, $resume = array())
+    public function updateBlinded($id, $resume = [])
     {
         $endpoint = '/candidates/' . $id . '/blindedresumes';
 
@@ -268,7 +268,7 @@ class Candidates extends Client
      * @param   array $parameters
      * @return  array|false
      */
-    public function getActivitiesAll($id = null, $parameters = array())
+    public function getActivitiesAll($id = null, $parameters = [])
     {
         $endpoint = '/candidates/activities';
 
@@ -288,7 +288,7 @@ class Candidates extends Client
      * @param   array $parameters
      * @return  array|false
      */
-    public function getDistinctFields($parameters = array())
+    public function getDistinctFields($parameters = [])
     {
         $endpoint = '/candidates/DistinctFields';
 
