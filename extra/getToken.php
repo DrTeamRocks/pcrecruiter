@@ -7,7 +7,7 @@ require_once __DIR__ . "/../vendor/autoload.php";
 
 // Get the token
 $pcr_token = new PCRecruiter\Token();
-$pcr_token->readConfig(__DIR__ . "/configs/pcr.php");
+$pcr_token->setConfig(__DIR__ . "/pcr.php");
 
 // Get the token
 $token = $pcr_token->get()['message']->SessionId;

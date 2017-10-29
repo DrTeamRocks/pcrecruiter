@@ -7,16 +7,6 @@
 class Users extends Client
 {
     /**
-     * Users constructor.
-     * @param string $token - PCR token for work with system
-     */
-    public function __construct($token)
-    {
-        parent::__construct();
-        $this->token = $token;
-    }
-
-    /**
      * Show all users or search by username
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/users.json

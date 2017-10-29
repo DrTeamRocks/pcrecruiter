@@ -1,80 +1,105 @@
 <?php namespace PCRecruiter;
+
 /**
  * @author Paul Rock <paul@drteam.rocks>
  * @link http://drteam.rocks
  * @license MIT
  */
 
+use \PCRecruiter\Interfaces\Client as ClientInterface;
+
 /**
  * Class PCRecruiter for work with PCRecruiter RESTful API {@link https://www.pcrecruiter.net/apidocs_v2/}
  */
-class Client
+class Client implements ClientInterface
 {
     /**
-     * Initial state of some variables
+     * @var \GuzzleHttp\Client
      */
-    public $_client;
-    public $_config;
+    private $_client;
 
     /**
-     * Default server parameters
+     * Main configuration
+     * @var array
      */
-    public $host = 'www.pcrecruiter.net';
-    public $port = '443';
-    public $path = '/rest/api';
-    public $useSSL = true;
+    private $_config = [];
 
     /**
-     * User initial values
+     * Token for queries
+     * @var string
      */
-    public $token;
-    public $database;
-    public $username;
-    public $password;
-    public $app_id;
-    public $api_key;
-    public $company_id;
+    private $token;
 
     /**
-     * PCRecruiter constructor.
+     * Client constructor.
+     * @param null|string $token
      */
-    public function __construct()
+    public function __construct($token = null)
     {
+        // If incoming token is not empty
+        if (!empty($token))
+            // Set the token
+            $this->setToken($token);
+
+        // Store the client object
         $this->_client = new \GuzzleHttp\Client();
     }
 
     /**
-     * Read the file with config
+     * Parse the incoming config
      *
-     * @param   string $file Filename
-     * @param   bool $autoload Automatically apply the configuration
-     * @return  mixed
+     * @param   string $file
+     * @param   bool $autoload
+     * @return  object $this
+     * @throws  \Exception
      */
-    public function readConfig($file, $autoload = true)
+    public function setConfig($file, $autoload = true)
     {
         if (file_exists($file)) {
+            // Store array into the variable
             $this->_config = require_once $file;
-            if ($autoload === true) $this->loadConfig();
-            return $this->_config;
+            // Load the parameters
+            if ($autoload === true) {
+                // Read array and store into values
+                foreach ($this->_config as $key => $value) $this->$key = $value;
+            }
         } else {
-            return false;
+            throw new \Exception("File $file not found.");
         }
+
+        return $this;
     }
 
     /**
-     * Parse the incoming config
+     * Get the array of parameters
+     *
+     * @return mixed
      */
-    public function loadConfig()
+    public function getConfig()
     {
-        // If _config variable is exist and if this variable is array
-        if (!empty($this->_config) && is_array($this->_config)) {
-            // Read array and store into values
-            foreach ($this->_config as $key => $value) {
-                $this->$key = $value;
-            }
-            return true;
-        }
-        return false;
+        return $this->_config;
+    }
+
+    /**
+     * Set the token for work
+     *
+     * @param $token
+     * @return $this
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+        return $this;
+    }
+
+    /**
+     * Get the current token
+     *
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->token;
     }
 
     /**
@@ -87,11 +112,11 @@ class Client
      */
     public function doRequest($type, $endpoint, $params = array())
     {
-        // Create the base URL
-        $base = ($this->useSSL) ? "https" : "http";
+        // Detect the default protocol
+        $http_proto = self::useSSL ? 'https' : 'http';
 
         // Generate the URL for request
-        $url = $base . "://" . $this->host . ":" . $this->port . $this->path . $endpoint;
+        $url = $http_proto . "://" . self::host . ":" . self::port . self::path . $endpoint;
 
         // Default headers
         $headers = array(

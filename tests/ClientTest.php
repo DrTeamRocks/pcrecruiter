@@ -1,30 +1,9 @@
-<?php
-
-require_once(__DIR__ . '/../src/Client.php');
+<?php namespace PCRecruiter;
 
 use PHPUnit\Framework\TestCase;
-use PCRecruiter\Client;
 
 class ClientTest extends TestCase
 {
-    public function testReadConfig()
-    {
-        $factory = new Client();
-        $config = __DIR__ . '/pcr.example.php';
-
-        // Check if script can read file
-        $this->assertTrue($factory->readConfig($config) !== false);
-    }
-
-    public function testLoadConfig()
-    {
-        $factory = new Client();
-        $factory->_config = include __DIR__ . '/pcr.example.php';
-
-        // Check if script can load the file
-        $this->assertTrue($factory->loadConfig());
-    }
-
     public function testDoRequest()
     {
         $factory = new Client();

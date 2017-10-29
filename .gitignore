@@ -1,7 +1,4 @@
-nbproject
-.kdev4
-.idea
-.kate-swp
-~*
+/.idea/
 /vendor/
 /composer.lock
+/extra/pcr.php

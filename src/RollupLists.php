@@ -7,32 +7,17 @@
 class RollupLists extends Client
 {
     /**
-     * RollupLists constructor.
-     * @param string $token - PCR token for work with system
-     */
-    public function __construct($token)
-    {
-        parent::__construct();
-        $this->token = $token;
-    }
-
-    /**
-     * Get all RollupLists or RollupList by Rollup Code
+     * Search Rollup Lists
      *
-     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/rolluplists.json
-     * @param   string|null $code RollupCode
-     * @param   array $parameters
+     * @param   array $params - List of parameters for query
      * @return  array|false
      */
-    public function get($code = null, $parameters = array())
+    public function search($params = array())
     {
         $endpoint = '/rolluplists';
 
-        if (!empty($code))
-            $endpoint .= '/' . $code;
-
-        if (!empty($parameters) && is_array($parameters))
-            $endpoint .= $this->compileURL($parameters);
+        if (!empty($params) && is_array($params))
+            $endpoint .= $this->compileURL($params);
 
         return $this->doRequest('get', $endpoint);
     }
@@ -41,27 +26,49 @@ class RollupLists extends Client
      * Create a new RollupLists
      *
      * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/rolluplists.json
-     * @param   array $placements
+     * @param   array $params - The RollupList to create
      * @return  array|false
      */
-    public function post($placements = array())
+    public function post($params = array())
     {
         $endpoint = '/rolluplists';
 
-        return $this->doRequest('post', $endpoint, array('RollupLists' => $placements));
+        return $this->doRequest('post', $endpoint, array('RollupLists' => $params));
+    }
+
+    /**
+     * Get RollupList by Rollup Code
+     *
+     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/rolluplists.json
+     * @param   string|null $code - RollupCode
+     * @param   array $params - List of parameters for query
+     * @return  array|false
+     */
+    public function get($code = null, $params = array())
+    {
+        $endpoint = '/rolluplists';
+
+        if (!empty($code))
+            $endpoint .= '/' . $code;
+
+        if (!empty($params) && is_array($params))
+            $endpoint .= $this->compileURL($params);
+
+        return $this->doRequest('get', $endpoint);
     }
 
     /**
      * Update a RollupLists
      *
-     * @param   $code
-     * @param   array $positions
+     * @link    https://www.pcrecruiter.net/APIDOCS_V2/json/rolluplists.json
+     * @param   int $code - The RollupCode of the Rollup Record that needs to be updated.
+     * @param   array $params - The Rollup List to update
      * @return  array|false
      */
-    public function put($code, $positions = array())
+    public function put($code, $params = array())
     {
-        $endpoint = '/rolluplists/' . $id;
+        $endpoint = '/rolluplists/' . $code;
 
-        return $this->doRequest('put', $endpoint, array('RollupLists' => $positions));
+        return $this->doRequest('put', $endpoint, array('RollupLists' => $params));
     }
 }
