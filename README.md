@@ -1,4 +1,4 @@
-![PCRecruiter PHP API Logo](http://drteam.rocks/images/pcrecruter/pcr_api.png)
+![PCRecruiter PHP API Logo](extra/pcr.png)
 
 # PCRecruiter PHP
 
@@ -11,7 +11,6 @@
 PHP library for work with PCRecruiter RESTful API
 
     composer require drteam/pcrecruiter
-
 
 ## Examples
 
